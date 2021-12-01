@@ -14,3 +14,5 @@ export LD_LIBRARY_PATH=<Path to the "Libraries" Directory (In this Repo)>/SFML\ 
 
 
 https://stackoverflow.com/questions/43983718/set-global-path-environment-variable-in-vs-code
+
+https://github.com/BojanV03/SFML_Fractals
