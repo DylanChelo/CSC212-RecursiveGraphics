@@ -11,12 +11,6 @@ int main(int argc, char**argv) {
     //Width and Height of Window/Image
     int width = 1000;
     int height = 1000;
-    //SFML Basic Window Initialization Code
-    std::string windowTitle = "Recursive Graphics Generator";
-    sf::ContextSettings settings;
-    settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(width, height), windowTitle, sf::Style::Default, settings);
-    window.setFramerateLimit(60);
     //Variable to set level of recursion
     int iterations = 0;
     //Variable to track selected fractal type; 1: Sierpinski's Triangle, 2: Koch's Snowflake, 3: Hilbert's Curve
@@ -24,6 +18,13 @@ int main(int argc, char**argv) {
     //Variable to hold starting color
     sf::Color startColor = sf::Color::White;
 
+    //SFML Basic Window Initialization Code
+    std::string windowTitle = "Recursive Graphics Generator";
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+    sf::RenderWindow window(sf::VideoMode(width, height), windowTitle, sf::Style::Default, settings);
+    window.setFramerateLimit(60);
+    
     //main loop
     while (window.isOpen()) {
         sf::Event event;
@@ -50,18 +51,32 @@ int main(int argc, char**argv) {
                     windowSelection = 3;
                     std::cout<<"Fractal Selection: Hilbert's Curve"<<std::endl;
                     windowTitle = "Hilbert's Curve";
+                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4)) {
+                    windowSelection = 4;
+                    std::cout<<"Fractal Selection: Dragon Curve"<<std::endl;
+                    windowTitle = "Dragon Curve";
                 } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
                     iterations++;
                     std::cout << "Current Level of Recursion: "<< iterations << std::endl;
                 } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-                    iterations--;
+                    if (iterations > 0) {
+                    iterations--;   
                     std::cout << "Current Level of Recursion: "<< iterations << std::endl;
+                    }
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
                     startColor = sf::Color::Blue;
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
                     startColor = sf::Color::Red;
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
                     startColor = sf::Color::Green;
+                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
+                    startColor = sf::Color::Yellow;
+                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C)) {
+                    startColor = sf::Color::Cyan;
+                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::M)) {
+                    startColor = sf::Color::Magenta;
+                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                    startColor = sf::Color::White;
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
                     sf::Texture texture;
                     texture.create(width, height);
@@ -80,7 +95,7 @@ int main(int argc, char**argv) {
         SierpinskiTriangle ST;
         ST.generateSierpinskiTriangle(width, height, iterations, startColor, window);
     } else if (windowSelection == 2) {
-
+        
     } else if (windowSelection == 3) {
 
     } 

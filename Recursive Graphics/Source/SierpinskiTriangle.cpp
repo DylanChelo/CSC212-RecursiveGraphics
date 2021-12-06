@@ -34,6 +34,12 @@ void SierpinskiTriangle::generateSierpinskiTriangle(int w, int h, int iterations
 }
 
 void SierpinskiTriangle::drawSierpinskiTriangle(sf::Vector2f &topTrianglePoint, sf::Vector2f &leftTrianglePoint, sf::Vector2f &rightTrianglePoint, int iteration, sf::RenderWindow &window) {
+  sf::Color temp = color;
+  int colorR = color.r;
+  int colorG = color.g;
+  int colorB = color.b;
+  
+
   if(iteration == 0) {
     drawTriangle(topTrianglePoint, leftTrianglePoint, rightTrianglePoint, color, window);
     return;
@@ -42,12 +48,13 @@ void SierpinskiTriangle::drawSierpinskiTriangle(sf::Vector2f &topTrianglePoint, 
   sf::Vector2f midRight = sf::Vector2f((rightTrianglePoint.x + topTrianglePoint.x)/2.0, (rightTrianglePoint.y + topTrianglePoint.y)/2.0);
   sf::Vector2f midBottom = sf::Vector2f((leftTrianglePoint.x+rightTrianglePoint.x)/2.0, (leftTrianglePoint.y+rightTrianglePoint.y)/2.0);
   if(iteration == 1) {
-      //sf::Color color = sf::Color(topTrianglePoint.y/container.getSize().y*255, 0, midRight.x/container.getSize().x*255);
+      color = sf::Color(colorR * midBottom.y/container.getSize().y, colorG * midBottom.y/container.getSize().y, colorB * midBottom.y/container.getSize().y);
       drawTriangle(topTrianglePoint, midLeft, midRight, color, window);
-      //color = sf::Color(midLeft.y/container.getSize().y*255, 0, midRight.x/container.getSize().x*255);
+      color = sf::Color(colorR * midLeft.y/container.getSize().y, colorG * midLeft.y/container.getSize().y, colorB * midLeft.y/container.getSize().y);
       drawTriangle(midLeft, leftTrianglePoint, midBottom, color, window);
-      //color = sf::Color(midRight.y/container.getSize().y*255, 0, midRight.x/container.getSize().x*255);
+      color = sf::Color(colorR * midRight.y/container.getSize().y, colorG * midRight.y/container.getSize().y, colorB * midRight.y/container.getSize().y);
       drawTriangle(midRight, midBottom, rightTrianglePoint, color, window);
+      color = temp;
   } else {
       drawSierpinskiTriangle(topTrianglePoint, midLeft, midRight, iteration-1, window);
       drawSierpinskiTriangle(midLeft, leftTrianglePoint, midBottom, iteration-1, window);

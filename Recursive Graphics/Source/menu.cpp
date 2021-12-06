@@ -38,7 +38,7 @@ void mainMenu::generateMenu(sf::RenderWindow & window) {
     text1.setFillColor(sf::Color::Magenta);
     text1.setPosition(30, 250);
     text2.setFont(font);
-    text2.setString("0 - Return to this menu\n1 - Sierpinski's Triangle\n2 - Hilbert's Curve\n2 - Koch's Snowflake\n3 - Hilbert's Dragon\n\nS - Save an image of the window");
+    text2.setString("0 - Return to this menu\n1 - Sierpinski's Triangle\n2 - Koch's Snowflake\n3 - Hilbert's Curve\n4 - Dragon's Curve\n\nS - Save an image of the window");
     text2.setCharacterSize(30);
     text2.setFillColor(sf::Color::White);
     text2.setPosition(30, 300);
@@ -46,7 +46,17 @@ void mainMenu::generateMenu(sf::RenderWindow & window) {
     heading2.setString("These keys will change the starting color of the fractal:");
     heading2.setCharacterSize(25);
     heading2.setFillColor(sf::Color::Magenta);
-    heading2.setPosition(30, 400);
+    heading2.setPosition(30, 600);
+    text3.setFont(font);
+    text3.setString("R - Red\nB - Blue\nG - Green\nY - Yellow\nW - White\nM - Magenta\nC - Cyan");
+    text3.setCharacterSize(30);
+    text3.setFillColor(sf::Color::White);
+    text3.setPosition(30, 650);
+    line2.setFont(font);
+    line2.setString("-------------------------------------------------------------------");
+    line2.setCharacterSize(30);
+    line2.setFillColor(sf::Color::White);
+    line2.setPosition(10, 900);
     window.draw(title);
     window.draw(subtitle);
     window.draw(line1);
@@ -54,4 +64,6 @@ void mainMenu::generateMenu(sf::RenderWindow & window) {
     window.draw(text1);
     window.draw(text2);
     window.draw(heading2);
+    window.draw(text3);
+    window.draw(line2);
 }
