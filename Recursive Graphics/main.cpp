@@ -1,11 +1,9 @@
 #include "Headers/Menu.hpp"
 #include "Headers/SierpinskiTriangle.hpp"
+//#include "Headers/KochSnowflake.hpp"
 #include "Headers/HilbertCurve.hpp"
-//#include "Header/SierpinskiCarpet.hpp"
-//#include "Header/CirclePattern.hpp"
-//#include "Header/KochSnowflake.hpp"
+//#include "Headers/DragonCurve.hpp"
 //#include "Header/TreeFractal.hpp"
-//#include "Header/Mandelbrot.hpp"
 
 int main(int argc, char**argv) {
     std::string filename = argv[1];
@@ -75,6 +73,16 @@ int main(int argc, char**argv) {
                     if (iterations > 0) {
                     iterations--;   
                     std::cout << "Current Level of Recursion: "<< iterations << std::endl;
+                    }
+                } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+                    //if right arrow is pressed, increase level of recursion
+                    type++;
+                    std::cout << "Fractal Variation: "<< type << std::endl;
+                } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+                    //if down arrow is pressed, decrease level of recursion
+                    if (type > 0) {
+                    type--;   
+                    std::cout << "Fractal Variation: "<< type << std::endl;
                     }
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
                     //Set starting color to Blue

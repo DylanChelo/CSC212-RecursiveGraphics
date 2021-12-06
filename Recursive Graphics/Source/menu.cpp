@@ -11,7 +11,7 @@ mainMenu::~mainMenu() {
 //Main menu generation function
 void mainMenu::generateMenu(sf::RenderWindow & window) {
     //load font
-    font.loadFromFile("../Resources/Gihun.ttf");
+    font.loadFromFile("../Resources/Fonts/Gihun.ttf");
     //set title
     title.setFont(font);
     title.setString("Welcome to the Recursive Graphics Generator!\n");

@@ -1,4 +1,4 @@
-#include "HilbertCurve.hpp"
+#include "../Headers/HilbertCurve.hpp"
 
 //hilbertCurve functions
 
