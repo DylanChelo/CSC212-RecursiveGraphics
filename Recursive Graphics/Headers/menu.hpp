@@ -14,6 +14,7 @@ class mainMenu {
     sf::Text heading2;
     sf::Text text1;
     sf::Text text2;
+    sf::Text text3;
     sf::Text line1;
     sf::Text line2;
 

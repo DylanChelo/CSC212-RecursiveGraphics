@@ -18,13 +18,13 @@ void SierpinskiTriangle::setContainer(float x1, float y1, float x2, float y2) {
 }
 
 //Setter for color
-void SierpinskiTriangle::setColor(std::vector<sf::Color> colors) {
-  this->colors = colors;
+void SierpinskiTriangle::setColor(sf::Color color) {
+  this->color = color;
 }
 
-void SierpinskiTriangle::generateSierpinskiTriangle(int w, int h, int iterations, std::vector<sf::Color> & colors, sf::RenderWindow & window) {
+void SierpinskiTriangle::generateSierpinskiTriangle(int w, int h, int iterations, sf::Color color, sf::RenderWindow & window) {
   setContainer(0, 0, w, h);
-  setColor(colors);
+  setColor(color);
   sf::Vector2f bottomRightPoint = sf::Vector2f(container.getPosition().x + container.getSize().x, container.getPosition().y + container.getSize().y);
   sf::Vector2f topLeftPoint = sf::Vector2f(container.getPosition());
   sf::Vector2f topTrianglePoint = sf::Vector2f((bottomRightPoint.x + topLeftPoint.x)/2.0, topLeftPoint.y);
@@ -34,7 +34,6 @@ void SierpinskiTriangle::generateSierpinskiTriangle(int w, int h, int iterations
 }
 
 void SierpinskiTriangle::drawSierpinskiTriangle(sf::Vector2f &topTrianglePoint, sf::Vector2f &leftTrianglePoint, sf::Vector2f &rightTrianglePoint, int iteration, sf::RenderWindow &window) {
-  sf::Color color = colors[iteration];
   if(iteration == 0) {
     drawTriangle(topTrianglePoint, leftTrianglePoint, rightTrianglePoint, color, window);
     return;

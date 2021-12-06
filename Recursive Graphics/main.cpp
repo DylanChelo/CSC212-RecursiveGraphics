@@ -6,8 +6,6 @@
 //#include "Header/TreeFractal.hpp"
 //#include "Header/Mandelbrot.hpp"
 
-std::vector<sf::Color> storeColors(std::vector<std::string> & colorVector);
-
 int main(int argc, char**argv) {
     std::string filename = argv[1];
     //Width and Height of Window/Image
@@ -24,7 +22,7 @@ int main(int argc, char**argv) {
     //Variable to track selected fractal type; 1: Sierpinski's Triangle, 2: Koch's Snowflake, 3: Hilbert's Curve
     int windowSelection = 0;
     //Variable to hold starting color
-    sf::Color startColor;
+    sf::Color startColor = sf::Color::White;
 
     //main loop
     while (window.isOpen()) {
@@ -78,37 +76,17 @@ int main(int argc, char**argv) {
     if (windowSelection == 0) {
         mainMenu mm;
         mm.generateMenu(window);
-    }
-    //SierpinskiTriangle ST;
-    //ST.generateSierpinskiTriangle(width, height, iterations, colors, window);
+    } else if (windowSelection == 1) {
+        SierpinskiTriangle ST;
+        ST.generateSierpinskiTriangle(width, height, iterations, startColor, window);
+    } else if (windowSelection == 2) {
+
+    } else if (windowSelection == 3) {
+
+    } 
+    
     window.display();
     }
+    window.~RenderWindow();
     return 0;
-}
-
-//Conversion function to convert colors from string to native color type in SFML, Colors Options: Black, White, Red, Blue, Green, Yellow, Magenta, Cyan
-std::vector<sf::Color> storeColors(std::vector<std::string>& colorVector) {
-std::vector<sf::Color> colorVec;
-for (int i = 0; i < colorVector.size(); i++) {
-    if (!(colorVector[i].compare("Black"))) {
-        colorVec.push_back(sf::Color::Black);
-    } else if (!(colorVector[i].compare("White"))) {
-        colorVec.push_back(sf::Color::White);
-    } else if (!(colorVector[i].compare("Red"))) {
-        colorVec.push_back(sf::Color::Red);
-    } else if (!(colorVector[i].compare("Blue"))) {
-        colorVec.push_back(sf::Color::Blue);
-    } else if (!(colorVector[i].compare("Green"))) {
-        colorVec.push_back(sf::Color::Green);
-    } else if (!(colorVector[i].compare("Yellow"))) {
-        colorVec.push_back(sf::Color::Yellow);
-    } else if (!(colorVector[i].compare("Magenta"))) {
-        colorVec.push_back(sf::Color::Magenta);
-    } else if (!(colorVector[i].compare("Cyan"))) {
-        colorVec.push_back(sf::Color::Cyan);
-    } else {
-        std::cout<<colorVector[i]<<" is not a Valid Color."<<std::endl;
-    }
-}
-return colorVec;
 }

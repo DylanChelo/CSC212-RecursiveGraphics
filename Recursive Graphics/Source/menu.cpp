@@ -38,14 +38,20 @@ void mainMenu::generateMenu(sf::RenderWindow & window) {
     text1.setFillColor(sf::Color::Magenta);
     text1.setPosition(30, 250);
     text2.setFont(font);
-    text2.setString("0 - return to this menu\n1 - Sierpinski's Triangle\n2 - Hilbert's Curve\n2 - Koch's Snowflake");
+    text2.setString("0 - Return to this menu\n1 - Sierpinski's Triangle\n2 - Hilbert's Curve\n2 - Koch's Snowflake\n3 - Hilbert's Dragon\n\nS - Save an image of the window");
     text2.setCharacterSize(30);
     text2.setFillColor(sf::Color::White);
     text2.setPosition(30, 300);
+    heading2.setFont(font);
+    heading2.setString("These keys will change the starting color of the fractal:");
+    heading2.setCharacterSize(25);
+    heading2.setFillColor(sf::Color::Magenta);
+    heading2.setPosition(30, 400);
     window.draw(title);
     window.draw(subtitle);
     window.draw(line1);
     window.draw(heading1);
     window.draw(text1);
     window.draw(text2);
+    window.draw(heading2);
 }
