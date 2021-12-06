@@ -10,6 +10,7 @@ class KochSnowflake{
 private:
     std::vector<sf::Vertex> vertices;
     std::vector<std::vector<sf::Vertex> > temp;
+    std::vector<sf::Vertex> finalVector;
     int degree, width, height;
     double sideLength;
     sf::RenderWindow* window;
@@ -56,113 +57,99 @@ void KochSnowflake::getCorrectPoints(int index){
     double dyTwo;
     double dyThree;
 
+    double x;
+
     double slope = (vertices[index].position.y - vertices[index + 1].position.y)/(vertices[index].position.x - vertices[index + 1].position.x);
 
     if(slope < 0){
-        dxOne = vertices[index].position.x - vertices[index + 1].position.x;
-        dxOne = dxOne / 3;
+        x = vertices[index].position.x - vertices[index+ 1].position.x;
+        
+        dxOne = std::abs(vertices[index].position.x - (x / 3));
 
-        dxThree = vertices[index].position.x - vertices[index + 1].position.x;
-        dxThree = dxThree / 3;
-        dxThree = 2 * dxThree;
+        dxThree = std::abs(vertices[index].position.x - (2 * x / 3));
+        
+        dyOne =std::abs(vertices[index + 1].position.y - (4 * x / 3));
 
-        dyOne = vertices[index + 1].position.y - vertices[index].position.y;
-        dyOne = dyOne / 3;
+        dyThree = std::abs(vertices[index + 1].position.y - (2 * x / 3));
 
-        dyThree = vertices[index + 1].position.y - vertices[index].position.y;
-        dyThree = dyThree / 3;
-        dyThree = 2 * dyThree; 
+        dxTwo = vertices[index + 1].position.x;
+        
+        dyTwo = dyOne;
 
-        dxTwo = vertices[index].position.y;
-
-        dyTwo = tempOne.position.y + dyThree;
-        dyTwo = dyTwo / 2;
-
-        std::cout << "IF:   " << "\n";
-        std::cout << "DX1:  " << dxOne << "\n";
-        std::cout << "DX2:  " << dxTwo << "\n";
-        std::cout << "DX3:  " << dxThree << "\n";
-        std::cout << "DY1:  " << dyOne << "\n";
-        std::cout << "DY2:  " << dyTwo << "\n";
-        std::cout << "DY3:  " << dyThree << "\n";
         tempOne = sf::Vector2f(dxOne, dyOne);
         tempTwo = sf::Vector2f(dxTwo, dyTwo);
         tempThree = sf::Vector2f(dxThree, dyThree);
-        std::cout << "DXONE:  " << tempOne.position.x << "\n";
-        std::cout << "DXTWO:  " << tempTwo.position.x << "\n";
-        std::cout << "DXThree:  " << tempThree.position.x << "\n";
-        std::cout << "DYONE:  " << tempOne.position.y << "\n";
-        std::cout << "DYTWO:  " << tempTwo.position.y << "\n";
-        std::cout << "DYThree:  " << tempThree.position.y << "\n" << "\n";
     }
     else if (slope > 0){
-        double x = vertices[index].position.x - vertices[index + 1].position.x;
+        
+            x = vertices[index].position.x - vertices[index + 1].position.x;
 
-        dxOne = std::abs(vertices[index + 1].position.x + (2/3)*x);
+            dxOne = std::abs(vertices[index + 1].position.x + (2 * x / 3));
 
-        dxThree = std::abs(vertices[index + 1].position.x + (1/3)*x);
+            dxThree = std::abs(vertices[index + 1].position.x + (x / 3));
 
-        dyOne = std::abs(vertices[index].position.y - (2/3)*x);
+            dyOne = std::abs(vertices[index].position.y - (2 * x / 3));
 
-        dyThree = std::abs(vertices[index].position.y - (4/3)*x);
+            dyThree = std::abs(vertices[index].position.y - (4 * x / 3));
 
-        dxTwo = vertices[index].position.y;
+            dxTwo = vertices[index].position.x;
 
-        dyTwo = std::abs(vertices[index].position.x);
-        dyTwo = std::abs(tempOne.position.y);
+            dyTwo = dyThree;
 
-        std::cout << "ELSE IF:   " << "\n";
-        std::cout << "DX1:  " << dxOne << "\n";
-        std::cout << "DX2:  " << dxTwo << "\n";
-        std::cout << "DX3:  " << dxThree << "\n";
-        std::cout << "DY1:  " << dyOne << "\n";
-        std::cout << "DY2:  " << dyTwo << "\n";
-        std::cout << "DY3:  " << dyThree << "\n";
-        tempOne = sf::Vector2f(dxOne, dyOne);
-        tempTwo = sf::Vector2f(dxTwo, dyTwo);
-        tempThree = sf::Vector2f(dxThree, dyThree);
-        std::cout << "DXONE:  " << tempOne.position.x << "\n";
-        std::cout << "DXTWO:  " << tempTwo.position.x << "\n";
-        std::cout << "DXThree:  " << tempThree.position.x << "\n";
-        std::cout << "DYONE:  " << tempOne.position.y << "\n";
-        std::cout << "DYTWO:  " << tempTwo.position.y << "\n";
-        std::cout << "DYThree:  " << tempThree.position.y << "\n" << "\n";
+            tempOne = sf::Vector2f(dxOne, dyOne);
+            tempTwo = sf::Vector2f(dxTwo, dyTwo);
+            tempThree = sf::Vector2f(dxThree, dyThree);
+        
     }
     else{
-        dxOne = vertices[index + 1].position.x - vertices[index].position.x;
-        dxOne = dxOne / 3;
+        if(vertices[index].position.x < vertices[index + 1].position.x){
+            dxOne = vertices[index + 1].position.x - vertices[index].position.x;
+            dxOne = dxOne / 3;
+            dxOne = vertices[index].position.x + dxOne;
 
-        dxThree = vertices[index + 1].position.x - vertices[index].position.x;
-        dxThree = dxThree / 3;
-        dxThree = 2 * dxThree;
+            dxThree = vertices[index + 1].position.x - vertices[index].position.x;
+            dxThree = 2 * dxThree / 3;
+            dxThree = dxThree + vertices[index].position.x;
 
-        dyOne = vertices[index + 1].position.y - vertices[index].position.y;
-        dyOne = dyOne / 3;
+            dyOne = vertices[index].position.y;
 
-        dyThree = vertices[index + 1].position.y - vertices[index].position.y;
-        dyThree = dyThree / 3;
-        dyThree = 2 * dyThree;
+            dyThree = vertices[index].position.y;
 
-        dxTwo = std::abs(dxOne + dxThree);
-        dxTwo = dxTwo / 2;
+            dxTwo = vertices[index].position.x + vertices[index + 1].position.x;
+            dxTwo = dxTwo / 2;
+            
+            dyTwo = pow(sideLength, 2);
+            dyTwo = dyTwo / 4;
+            dyTwo = pow(sideLength, 2) - dyTwo;
+            dyTwo = sqrt(dyTwo);
+            dyTwo = dyTwo + vertices[index].position.y;
 
-        dyTwo = vertices[index].position.y;
-        std::cout << "ELSE:   " << "\n";
-        std::cout << "DX1:  " << dxOne << "\n";
-        std::cout << "DX2:  " << dxTwo << "\n";
-        std::cout << "DX3:  " << dxThree << "\n";
-        std::cout << "DY1:  " << dyOne << "\n";
-        std::cout << "DY2:  " << dyTwo << "\n";
-        std::cout << "DY3:  " << dyThree << "\n";
-        tempOne = sf::Vector2f(dxOne, dyOne);
-        tempTwo = sf::Vector2f(dxTwo, dyTwo);
-        tempThree = sf::Vector2f(dxThree, dyThree);
-        std::cout << "DXONE:  " << tempOne.position.x << "\n";
-        std::cout << "DXTWO:  " << tempTwo.position.x << "\n";
-        std::cout << "DXThree:  " << tempThree.position.x << "\n";
-        std::cout << "DYONE:  " << tempOne.position.y << "\n";
-        std::cout << "DYTWO:  " << tempTwo.position.y << "\n";
-        std::cout << "DYThree:  " << tempThree.position.y << "\n" << "\n";
+            tempOne = sf::Vector2f(dxOne, dyOne);
+            tempTwo = sf::Vector2f(dxTwo, dyTwo);
+            tempThree = sf::Vector2f(dxThree, dyThree);
+        }
+        else{
+            dxOne = vertices[index + 1].position.x - vertices[index].position.x;
+            dxOne = dxOne / 3;
+            dxOne = vertices[index].position.x + dxOne;
+
+            dxThree = vertices[index + 1].position.x - vertices[index].position.x;
+            dxThree = 2 * dxThree / 3;
+            dxThree = dxThree + vertices[index].position.x;
+
+            dyOne = vertices[index].position.y;
+
+            dyThree = vertices[index].position.y;
+
+            dxTwo = vertices[index].position.x + vertices[index + 1].position.x;
+            dxTwo = dxTwo / 2;
+
+            dyTwo = vertices[index].position.y - sqrt(pow(sideLength,2) - pow(sideLength,2) / 4);
+
+            tempOne = sf::Vector2f(dxOne, dyOne);
+            tempTwo = sf::Vector2f(dxTwo, dyTwo);
+            tempThree = sf::Vector2f(dxThree, dyThree);
+        }
     }
 
     smallTemp.push_back(tempOne);
@@ -182,6 +169,7 @@ void KochSnowflake::recurseSnowflake(int counter){
         return;
     }
 
+
     //Change length of side to be 1/3 the original size
     sideLength = sideLength/3;
 
@@ -193,42 +181,27 @@ void KochSnowflake::recurseSnowflake(int counter){
         getCorrectPoints(i);
     }
 
-    
-    std::cout << "START" << "\n";
-    for(int i = 0; i < vertices.size(); i++){
-        std::cout << vertices[i].position.x << "   " << vertices[i].position.y << "\n";
-    }
-    
-    
-    std::cout << "START TEMP" << "\n" << "\n";
-    for(int i = 0; i < 3*temp.size(); i = i + 3){
-        std::cout << temp[i/3][i].position.x << "   " << temp[i/3][i].position.y << "\n";
-        std::cout << temp[i/3][i + 1].position.x << "   " << temp[i/3][i + 1].position.y << "\n";
-        std::cout << temp[i/3][i + 2].position.x << "   " << temp[i/3][i + 2].position.y << "\n" << "\n";
-    }
+    //Put all values from temp into final vector
 
+    finalVector.clear();
 
-    //Put all values from temp into vector
-    int tempSize = temp.size();
-    int currentIndex = 1;
+    for(int i = 1; i < 4 * (vertices.size() - 1); i = i + 4){
+        finalVector.insert(finalVector.begin() + i - 1, vertices[(i - 1) / 4]);
+        finalVector.insert(finalVector.begin() + i, temp[(i - 1) / 4][0]);
+        finalVector.insert(finalVector.begin() + i + 1, temp[(i - 1) / 4][1]);
+        finalVector.insert(finalVector.begin() + i + 2, temp[(i - 1) / 4][2]);
+    }
+    finalVector.insert(finalVector.begin() + finalVector.size(), vertices[0]);
     
-    for(int i = 0; i < tempSize; i++){
-        currentIndex = currentIndex + i;
-        vertices.insert(vertices.begin() + currentIndex, temp[currentIndex][currentIndex]);
-        currentIndex = currentIndex + 1;
-        vertices.insert(vertices.begin() + currentIndex, temp[currentIndex][currentIndex]);
-        currentIndex = currentIndex + 1;
-        vertices.insert(vertices.begin() + currentIndex, temp[currentIndex][currentIndex]);
+    
+    temp.clear();
+    vertices.clear();
+
+    for(int i = 0; i < finalVector.size(); i++){
+        vertices.push_back(finalVector[i]);
     }
 
-    /*
-    std::cout << "AFTER" << "\n";
-    for(int i = 0; i < vertices.size(); i++){
-        std::cout << vertices[i].position.x << "   " << vertices[i].position.y << "\n";
-    }
-    std::cout << "END" << "\n";
-    */
-
+    
     recurseSnowflake(counter + 1);
 }
 
@@ -242,6 +215,12 @@ void KochSnowflake::firstSnowflake(){
     vertices.push_back(sf::Vector2f(3*width/4, 3*height/4));
     vertices.push_back(sf::Vector2f(width/2, height/4));
 
+    if(degree == 1){
+    finalVector.push_back(sf::Vector2f(width/2, height/4));
+    finalVector.push_back(sf::Vector2f(width/4, 3*height/4));
+    finalVector.push_back(sf::Vector2f(3*width/4, 3*height/4));
+    finalVector.push_back(sf::Vector2f(width/2, height/4));
+    }
 
     sideLength = vertices[2].position.x - vertices[1].position.x;
 
@@ -255,7 +234,7 @@ void KochSnowflake::firstSnowflake(){
 
 
 void KochSnowflake::drawSnowflake(){
-    window->draw(&vertices[0], vertices.size(), sf::LineStrip);
+    window->draw(&finalVector[0], finalVector.size(), sf::LineStrip);
 }
 
 
@@ -276,7 +255,7 @@ int main()
     int height = 1000;
     int width = 1000;
     int n = 2;
-
+    
     sf::RenderWindow window(sf::VideoMode(width, height), "My window");
 
     // run the program as long as the window is open
