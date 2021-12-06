@@ -117,12 +117,11 @@ void KochSnowflake::getCorrectPoints(int index){
 
             dxTwo = vertices[index].position.x + vertices[index + 1].position.x;
             dxTwo = dxTwo / 2;
+                
+
+            dyTwo = vertices[index].position.y + sqrt(pow(sideLength,2) - pow(sideLength,2) / (4*(degree)));
             
-            dyTwo = pow(sideLength, 2);
-            dyTwo = dyTwo / 4;
-            dyTwo = pow(sideLength, 2) - dyTwo;
-            dyTwo = sqrt(dyTwo);
-            dyTwo = dyTwo + vertices[index].position.y;
+            
 
             tempOne = sf::Vector2f(dxOne, dyOne);
             tempTwo = sf::Vector2f(dxTwo, dyTwo);
