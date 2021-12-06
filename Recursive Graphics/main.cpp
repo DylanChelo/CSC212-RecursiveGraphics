@@ -1,5 +1,6 @@
-#include "Headers/menu.hpp"
+#include "Headers/Menu.hpp"
 #include "Headers/SierpinskiTriangle.hpp"
+#include "Headers/HilbertCurve.hpp"
 //#include "Header/SierpinskiCarpet.hpp"
 //#include "Header/CirclePattern.hpp"
 //#include "Header/KochSnowflake.hpp"
@@ -13,6 +14,8 @@ int main(int argc, char**argv) {
     int height = 1000;
     //Variable to set level of recursion
     int iterations = 0;
+    //Curve Versions
+    int type = 0;
     //Variable to track selected fractal type; 1: Sierpinski's Triangle, 2: Koch's Snowflake, 3: Hilbert's Curve
     int windowSelection = 0;
     //Variable to hold starting color
@@ -120,10 +123,12 @@ int main(int argc, char**argv) {
         
     } else if (windowSelection == 3) {
         //set window to hilbert's curve
-
+        hilbertCurve HC(iterations, width, height, type, startColor, &window);
+        HC.createCurve();
     } else if (windowSelection == 4) {
         //set window to dragon's curve
-
+        //dragonCurve DC(iterations, width, height, type, startColor, &window);
+        //DC.createCurve();
     } 
     //Display window
     window.display();

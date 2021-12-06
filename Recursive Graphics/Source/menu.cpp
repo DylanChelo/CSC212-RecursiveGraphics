@@ -1,4 +1,4 @@
-#include "../Headers/menu.hpp"
+#include "../Headers/Menu.hpp"
 
 //Default Constructor
 mainMenu::mainMenu() {
