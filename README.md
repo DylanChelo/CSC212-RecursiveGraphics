@@ -36,6 +36,8 @@ The SFML Library is currently installed in this repository, however compiling th
 ## Troubleshooting
 The most common issue with this method of installing and compiling the files with SFML is that the files do compile, however the following error occurs when the ` ./generator.out ` command is run to start the program:
 
+` Failed to open X11 display; make sure the DISPLAY environment variable is set correctly Aborted (core dumped) `
+
 The solution to this can be found [here](https://www.reddit.com/r/bashonubuntuonwindows/comments/6p3u56/cannot_get_sfml_to_work_properly/). To solve this problem, you must install a Windows XServer like Mwing, and then run the following command in the linux terminal to set the display correctly:
 ` export DISPLAY=:0 `
 To check that the display has been set, execute the following command:
