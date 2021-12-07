@@ -5,8 +5,7 @@
 //#include "Headers/DragonCurve.hpp"
 //#include "Header/TreeFractal.hpp"
 
-int main(int argc, char**argv) {
-    std::string filename = argv[1];
+int main() {
     //Width and Height of Window/Image
     int width = 1000;
     int height = 1000;
@@ -18,12 +17,13 @@ int main(int argc, char**argv) {
     int windowSelection = 0;
     //Variable to hold starting color
     sf::Color startColor = sf::Color::White;
+    //Name of file to store saved image
+    std::string fileName = "fractal.jpg";
 
     //SFML Basic Window Initialization Code
-    std::string windowTitle = "Recursive Graphics Generator";
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(width, height), windowTitle, sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(width, height),  "Recursive Graphics Generator", sf::Style::Default, settings);
     window.setFramerateLimit(60);
     
     //main loop
@@ -43,27 +43,26 @@ int main(int argc, char**argv) {
                     // if 0 is pressed, set window to main menu
                     windowSelection = 0;
                     std::cout<<"Main Menu"<<std::endl;
-                    windowTitle = "Recursive Graphics Generator";
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
                     //if 1 if pressed, set window to Sierpinki's Triangle
                     windowSelection = 1;
                     std::cout<<"Fractal Selection: Sierpinski's Triangle"<<std::endl;
-                    windowTitle = "Sierpinski's Triangle";
+                    fileName = "Sierpinski_Triangle.jpg";
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
                     //if 2 is pressed, set window to Koch's Snowflake
                     windowSelection = 2;
                     std::cout<<"Fractal Selection: Koch's Snowflake"<<std::endl;
-                    windowTitle = "Koch's Snowflake";
+                    fileName = "Koch_Snowflake.jpg";
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
                     //if 3 is pressed, set window to Hilbert's Curve
                     windowSelection = 3;
                     std::cout<<"Fractal Selection: Hilbert's Curve"<<std::endl;
-                    windowTitle = "Hilbert's Curve";
+                    fileName = "Hilbert_Curve.jpg";
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4)) {
                     //if 4 is pressed, set window to Dragon's Curve
                     windowSelection = 4;
                     std::cout<<"Fractal Selection: Dragon's Curve"<<std::endl;
-                    windowTitle = "Dragon's Curve";
+                    fileName = "Dragon_Curve.jpg";
                 } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
                     //if up arrow is pressed, increase level of recursion
                     iterations++;
@@ -110,8 +109,8 @@ int main(int argc, char**argv) {
                     sf::Texture texture;
                     texture.create(width, height);
                     texture.update(window);
-                    if (texture.copyToImage().saveToFile(filename)) {
-                        std::cout << "screenshot saved to " << filename << std::endl;
+                    if (texture.copyToImage().saveToFile(fileName)) {
+                        std::cout << "screenshot saved to " << fileName << std::endl;
                     }       
                 }
             }
