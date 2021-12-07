@@ -43,22 +43,22 @@ int main() {
                     //if 1 if pressed, set window to Sierpinki's Triangle
                     windowSelection = 1;
                     std::cout<<"Fractal Selection: Sierpinski's Triangle"<<std::endl;
-                    fileName = "Sierpinski_Triangle.jpg";
+                    fileName = "SierpinskiTriangle.jpg";
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
                     //if 2 is pressed, set window to Koch's Snowflake
                     windowSelection = 2;
                     std::cout<<"Fractal Selection: Koch's Snowflake"<<std::endl;
-                    fileName = "Koch_Snowflake.jpg";
+                    fileName = "KochSnowflake.jpg";
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
                     //if 3 is pressed, set window to Hilbert's Curve
                     windowSelection = 3;
                     std::cout<<"Fractal Selection: Hilbert's Curve"<<std::endl;
-                    fileName = "Hilbert_Curve.jpg";
+                    fileName = "HilbertCurve.jpg";
                 } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4)) {
                     //if 4 is pressed, set window to Dragon's Curve
                     windowSelection = 4;
                     std::cout<<"Fractal Selection: Dragon's Curve"<<std::endl;
-                    fileName = "Dragon_Curve.jpg";
+                    fileName = "DragonCurve.jpg";
                 } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
                     //if up arrow is pressed, increase level of recursion
                     iterations++;
@@ -131,7 +131,7 @@ int main() {
         HC.createCurve();
     } else if (windowSelection == 4) {
         //set window to dragon's curve
-        dragonCurve DC(iterations, width, height, type, startColor, &window);
+        dragonCurve DC(iterations+1, width, height, type, startColor, &window);
         DC.createCurve();
     } 
     //Display window

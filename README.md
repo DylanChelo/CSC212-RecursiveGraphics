@@ -1,5 +1,4 @@
 # CSC 212 Final Group Project: Recursive Graphics (Fractals)
-------------------------------------------------------------
 *Created by Dylan Chelo, Nick Powers, and Mason Jacob*
 
 ## Overview
@@ -49,11 +48,25 @@ If you want to go this way, there's a [dedicated tutorial](https://www.sfml-dev.
 ![Sierpinski Triangle](Resources/Images/SierpinskiTriangle1.jpg)
 ![Sierpinski Triangle](Resources/Images/SierpinskiTriangle2.jpg)
 
-## Koch Snowflake:
+------------------------------------------------------------
+## Koch's Snowflake:
 
+![Koch's Snowflake](Resources/Images/KochSnowflake1.jpg)
+![Koch's Snowflake](Resources/Images/KochSnowflake2.jpg)
+![Koch's Snowflake](Resources/Images/KochSnowflake3.jpg)
+
+------------------------------------------------------------
 ## Hilbert's Curve:
 
 ![Hilbert's Curve](Resources/Images/HilbertCurve1.jpg)
 ![Hilbert's Curve](Resources/Images/HilbertCurve2.jpg)
 ![Hilbert's Curve](Resources/Images/HilbertCurve3.jpg)
+
+------------------------------------------------------------
 ## Dragon's Curve:
+
+![Dragon's Curve](Resources/Images/DragonCurve1.jpg)
+![Dragon's Curve](Resources/Images/DragonCurve2.jpg)
+![Dragon's Curve](Resources/Images/DragonCurve3.jpg)
+
+------------------------------------------------------------
