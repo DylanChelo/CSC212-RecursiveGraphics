@@ -10,7 +10,7 @@ This project uses the SFML Library to create an interative program that generate
 
 ## Setup
 
-This program is mainly tested on Ubuntu, as it uses the Linux version of the SFML Library installed directly into the libraries folder of this repository.
+This program is mainly tested on Ubuntu, and currently requires that the SFML library is installed using the command listed below. There was an attempt made to use the Linux version of the SFML Library installed directly into the libraries folder of this repository, and instructions on how to try that are in comments in the Makefile. However, at this time it is not 100% working, so the steps below are recommended. 
 
 ### Prerequisites
 
@@ -20,21 +20,11 @@ This program is mainly tested on Ubuntu, as it uses the Linux version of the SFM
 
 ` sudo apt-get install g++ `
 
-2.  **Install SFML library (Optional)**
+2.  **Install SFML library**
 
-The SFML Library is currently installed in this repository, so there is no need to download and configure for yourself. However, as libraries are very finicky, below are instructions for three ways to install it if you run into issues using our repo version:
+The SFML Library is currently installed in this repository, however compiling the files using the Makefile is not 100% working. Therefore, it is necessary to install the library through the linus command line using the command below in order to use the current version of the Makefile. 
 
-* Using package manager
-
-$ sudo apt-get install libsfml-dev
-
-* Download the SDK
-
-Download the SDK from the [download page](https://www.sfml-dev.org/download.php), unpack it and copy the files to your preferred location: either a separate path in your personal folder (like /home/me/sfml), or a standard path (like /usr/local).
-
-* Building SFML yourself
-
-If you want to go this way, there's a [dedicated tutorial](https://www.sfml-dev.org/tutorials/2.0/compile-with-cmake.php) on building SFML yourself.
+` sudo apt-get install libsfml-dev `
 
 ## Compile and Run
 1. Clone this repository
@@ -42,6 +32,15 @@ If you want to go this way, there's a [dedicated tutorial](https://www.sfml-dev.
 3. Type 'make' in your terminal (without quotes)
 4. Type './generator.out' in your terminal (also without quotes)
 5. Read the Menu screen for instructions on how to use the generator
+
+## Troubleshooting
+The most common issue with this method of installing and compiling the files with SFML is that the files do compile, however the following error occurs when the ./generator.out comnmand is run to start the program:
+
+The solution to this can be found here[https://www.reddit.com/r/bashonubuntuonwindows/comments/6p3u56/cannot_get_sfml_to_work_properly/]. To solve this problem, you must install a Windows XServer like Mwing, and then run the following command in the linux terminal to set the display correctly:
+` export DISPLAY=:0 `
+To check that the display has been set, execute the following command:
+` echo $DISPLAY `
+which should return the set display, :0
 
 # Gallery:
 ## Sierpinski Triangle:
