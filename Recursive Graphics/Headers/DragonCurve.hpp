@@ -1,10 +1,5 @@
-//
-//  dragonCurve.hpp
-//  csc212recursivefractals
-//
-//  Created by Nicholas Powers on 12/5/21.
-//
-
+//Header for the Dragon's Curve Fractal
+//Written by Nick Powers
 
 #ifndef dragonCurve_hpp
 #define dragonCurve_hpp
