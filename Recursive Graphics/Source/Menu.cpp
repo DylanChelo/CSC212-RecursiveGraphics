@@ -1,3 +1,6 @@
+//Class Implementation of the Main Menu
+//Written by Mason Jacob
+
 #include "../Headers/Menu.hpp"
 
 //Default Constructor
