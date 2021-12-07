@@ -1,3 +1,6 @@
+//Class Implementation of Sierpinski's Triangle Fractal
+//Written by Mason Jacob
+
 #include "../Headers/SierpinskiTriangle.hpp"
 
 //Default Constructor
