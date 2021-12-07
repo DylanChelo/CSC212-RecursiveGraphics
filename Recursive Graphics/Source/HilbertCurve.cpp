@@ -1,3 +1,6 @@
+//Class Implementation for Hilbert's Curve Fractal
+//Written by Nick Powers
+
 #include "../Headers/HilbertCurve.hpp"
 
 //hilbertCurve functions
