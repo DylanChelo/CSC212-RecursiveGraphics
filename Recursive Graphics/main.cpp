@@ -1,3 +1,6 @@
+//Main Driver Code for Recursive Graphics Generator
+//Written by Mason Jacob
+
 #include "Headers/Menu.hpp"
 #include "Headers/SierpinskiTriangle.hpp"
 #include "Headers/KochSnowflake.hpp"
