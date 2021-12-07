@@ -1,6 +1,7 @@
 //Main Driver Code for Recursive Graphics Generator
 //Written by Mason Jacob
 
+#include <SFML/Audio.hpp>
 #include "Headers/Menu.hpp"
 #include "Headers/SierpinskiTriangle.hpp"
 #include "Headers/KochSnowflake.hpp"
@@ -25,8 +26,15 @@ int main() {
     //SFML Basic Window Initialization Code
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
+    
     sf::RenderWindow window(sf::VideoMode(width, height),  "Recursive Graphics Generator", sf::Style::Default, settings);
     window.setFramerateLimit(60);
+    //Code to play music from file
+    sf::Music music;
+    music.openFromFile("../Resources/Audio/music1.ogg");
+    bool musicOn = false;
+    music.play();
+    musicOn = true;
     
     //main loop
     while (window.isOpen()) {
@@ -111,7 +119,19 @@ int main() {
                     if (texture.copyToImage().saveToFile(fileName)) {
                         std::cout << "screenshot saved to " << fileName << std::endl;
                     }       
+                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) {
+                    //If O Key is pressed, Toggle Music
+                    if (musicOn) {
+                        music.stop();
+                        musicOn = false;
+                        std::cout<<"Music: OFF"<<std::endl;
+                    } else {
+                        music.play();
+                        musicOn = true;
+                        std::cout<<"Music: ON"<<std::endl;
+                    }
                 }
+
             }
         }
     //clear window

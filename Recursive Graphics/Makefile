@@ -2,7 +2,7 @@
 # Written by Mason Jacob
 
 generator.out: main.o Menu.o SierpinskiTriangle.o KochSnowflake.o HilbertCurve.o DragonCurve.o
-	g++ *.o -o generator.out -lsfml-graphics -lsfml-window -lsfml-system
+	g++ *.o -o generator.out -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 main.o: main.cpp
 	g++ -c main.cpp

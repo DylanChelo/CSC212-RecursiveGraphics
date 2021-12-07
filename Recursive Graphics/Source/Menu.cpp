@@ -54,7 +54,7 @@ void mainMenu::generateMenu(sf::RenderWindow & window) {
     window.draw(text1);
     //set text 2
     text2.setFont(font);
-    text2.setString("0 - Return to this menu\n1 - Sierpinski's Triangle\n2 - Koch's Snowflake\n3 - Hilbert's Curve\n4 - Dragon's Curve\n\nS - Save an image of the window\nUp Arrow - Increase level of recursion\nDown Arrrow - Decrease level of recursion\n Right Arrow - Change Fractal Options (Forward)\nLeft Arrow - Change Fractal Options (Back)");
+    text2.setString("0 - Return to this menu\n1 - Sierpinski's Triangle\n2 - Koch's Snowflake\n3 - Hilbert's Curve\n4 - Dragon's Curve\nO - Toggle Music ON and OFF (Default: ON)\nS - Save an image of the window\nUp Arrow - Increase level of recursion\nDown Arrrow - Decrease level of recursion\n Right Arrow - Change Fractal Options (Forward)\nLeft Arrow - Change Fractal Options (Back)");
     text2.setCharacterSize(25);
     text2.setFillColor(sf::Color::White);
     text2.setPosition(30, 300);
