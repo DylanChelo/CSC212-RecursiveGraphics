@@ -1,3 +1,6 @@
+//Class Implemetation for the Dragon's Curve Fractal
+//Written by Nick Powers
+
 #include "../Headers/DragonCurve.hpp"
 
 //dragonCurve functions
