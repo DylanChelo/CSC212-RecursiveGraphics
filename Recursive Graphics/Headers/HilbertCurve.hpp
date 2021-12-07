@@ -1,3 +1,6 @@
+//Header for Hilbert's Curve Fractal
+//Written by Nick Powers
+
 #ifndef hilbertCurve_hpp
 #define hilbertCurve_hpp
 
