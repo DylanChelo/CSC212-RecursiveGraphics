@@ -1,5 +1,5 @@
 # CSC 212 Final Group Project: Recursive Graphics (Fractals)
-*Created by Dylan Chelo, Nick Powers, and Mason Jacob*
+*Created by Dylan Chelo, Mason Jacob, and Nick Powers*
 
 ## Overview
 This project uses the SFML Library to create an interative program that generates recursive graphics. Users interact with the program using keystrokes, to create the following fractals:
