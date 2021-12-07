@@ -1,3 +1,6 @@
+//Header for Main Menu
+//Written by Mason Jacob
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <sstream>
