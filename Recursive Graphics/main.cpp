@@ -120,7 +120,7 @@ int main() {
     } else if (windowSelection == 1) {
         //set window to sierpinski's triangle
         SierpinskiTriangle ST;
-        ST.generateSierpinskiTriangle(width, height, iterations, startColor, window);
+        ST.generateSierpinskiTriangle(width, width*sqrt(3)/2, iterations, startColor, window);
     } else if (windowSelection == 2) {
         //set window to koch's snowflake
         KochSnowflake KS(iterations+1, width, height, type, startColor, &window);

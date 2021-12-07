@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include <math.h>
+#include <cmath>
 #include <iostream>
 
 class KochSnowflake{
