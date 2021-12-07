@@ -1,3 +1,6 @@
+//Header for Koch's Snowflake Fractal
+//Written by Dylan Chelo
+
 #ifndef KochSnowflake_hpp
 #define KochSnowflake_hpp
 
