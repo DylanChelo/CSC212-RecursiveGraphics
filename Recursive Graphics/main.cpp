@@ -162,5 +162,6 @@ int main() {
     }
     //Deconstruct window
     window.~RenderWindow();
+    music.~Music();
     return 0;
 }
