@@ -34,6 +34,7 @@ The SFML Library is currently installed in this repository, however compiling th
 5. Read the Menu screen for instructions on how to use the generator
 
 ## Troubleshooting
+### X11 Error
 The most common issue with this method of installing and compiling the files with SFML is that the files do compile, however the following error occurs when the ` ./generator.out ` command is run to start the program:
 
 ` Failed to open X11 display; make sure the DISPLAY environment variable is set correctly Aborted (core dumped) `
@@ -43,6 +44,9 @@ The solution to this can be found [here](https://www.reddit.com/r/bashonubuntuon
 To check that the display has been set, execute the following command:
 ` echo $DISPLAY `
 which should return the set display, ` :0 `
+
+### Music Issue
+When the program is run, if the music plays momentarialy and then cuts out, then there is an unknown issue that will cause SFML to break. The only way to fix this is to restart linux and comment out lines 33, 34, 36, 125, 129 and 165 in the main.cpp file (All the lines with the sf::Music class). While this will remove the music, this will allow the program to run correctly. 
 
 # Gallery:
 ## Sierpinski Triangle:
