@@ -34,7 +34,7 @@ The SFML Library is currently installed in this repository, however compiling th
 5. Read the Menu screen for instructions on how to use the generator
 
 ## Troubleshooting
-The most common issue with this method of installing and compiling the files with SFML is that the files do compile, however the following error occurs when the ` ./generator.out `command is run to start the program:
+The most common issue with this method of installing and compiling the files with SFML is that the files do compile, however the following error occurs when the ` ./generator.out ` command is run to start the program:
 
 The solution to this can be found [here](https://www.reddit.com/r/bashonubuntuonwindows/comments/6p3u56/cannot_get_sfml_to_work_properly/). To solve this problem, you must install a Windows XServer like Mwing, and then run the following command in the linux terminal to set the display correctly:
 ` export DISPLAY=:0 `
