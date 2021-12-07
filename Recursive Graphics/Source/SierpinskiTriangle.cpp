@@ -25,10 +25,16 @@ void SierpinskiTriangle::setColor(sf::Color color) {
   this->color = color;
 }
 
+void SierpinskiTriangle::setType(int type) {
+  this->type = type;
+}
+
 //Main driving member function to generate the sierpinski triangle in the class
-void SierpinskiTriangle::generateSierpinskiTriangle(int w, int h, int iterations, sf::Color color, sf::RenderWindow & window) {
+void SierpinskiTriangle::generateSierpinskiTriangle(int w, int h, int iterations, int type, sf::Color color, sf::RenderWindow & window) {
   //Initilizes Container
   setContainer(0, 0, w, h);
+  //Sets Type
+  setType(type);
   //Sets Color
   setColor(color);
   //Calculates the 3 point of the triangle
@@ -58,6 +64,14 @@ void SierpinskiTriangle::drawSierpinskiTriangle(sf::Vector2f &topTrianglePoint, 
   sf::Vector2f midBottom = sf::Vector2f((leftTrianglePoint.x+rightTrianglePoint.x)/2.0, (leftTrianglePoint.y+rightTrianglePoint.y)/2.0);
   //Recursion Base Case
   if(iteration == 1) {
+    if (type == 0) {
+      //Draws top triangle
+      drawTriangle(topTrianglePoint, midLeft, midRight, color, window);
+      //Draws left triangle
+      drawTriangle(midLeft, leftTrianglePoint, midBottom, color, window);
+      //Draws right triangle
+      drawTriangle(midRight, midBottom, rightTrianglePoint, color, window);
+    } else {
       //Sets RGB Color Values based on position of triangle
       color = sf::Color(colorR * midBottom.y/container.getSize().y, colorG * midBottom.y/container.getSize().y, colorB * midBottom.y/container.getSize().y);
       //Draws top triangle
@@ -70,6 +84,7 @@ void SierpinskiTriangle::drawSierpinskiTriangle(sf::Vector2f &topTrianglePoint, 
       drawTriangle(midRight, midBottom, rightTrianglePoint, color, window);
       //Resets Color to Original Value
       color = temp;
+    }
   } else {
       //Recurisve Calls for top, left and right triangles
       drawSierpinskiTriangle(topTrianglePoint, midLeft, midRight, iteration-1, window);
