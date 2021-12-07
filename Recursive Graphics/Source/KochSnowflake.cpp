@@ -1,50 +1,20 @@
-#include <SFML/Graphics.hpp>
-#include <vector>
-#include <math.h>
-#include <iostream>
+#include "../Headers/KochSnowflake.hpp"
 
-
-
-//KoshSnowflake.h
-class KochSnowflake{
-private:
-    std::vector<sf::Vertex> vertices;
-    std::vector<std::vector<sf::Vertex> > temp;
-    std::vector<sf::Vertex> finalVector;
-    int degree, width, height;
-    double sideLength;
-    sf::RenderWindow* window;
-    void recurseSnowflake(int degree);
-    void getCorrectPoints(int index);
-    void firstSnowflake();
-    void drawSnowflake();
-
-public:
-    KochSnowflake(int degree, sf::RenderWindow* window);
-    void createSnowflake();
-
-};
-
-
-
-
-
-
-
-
-
-
-//KoshSnowflake.cpp
-KochSnowflake::KochSnowflake(int degree, sf::RenderWindow* window){
+KochSnowflake::KochSnowflake(int degree,int width,int height,int type,sf::Color color, sf::RenderWindow* window){
     this->degree = degree;
     this->window = window;
+    this->width = width;
+    this->height = height;
+    this->type = type;
+    this-> color = color;
 }
 
-
+//gets the points for the new triangles being added on every line of the snowflake
+//depending on the slope of the given line, the points must be calculated differently
 void KochSnowflake::getCorrectPoints(int index){
     
     std::vector<sf::Vertex> smallTemp;
-
+    //creates vertexes to later be added into a temporary vector
     sf::Vertex tempOne;
     sf::Vertex tempTwo;
     sf::Vertex tempThree;
@@ -58,30 +28,33 @@ void KochSnowflake::getCorrectPoints(int index){
     double dyThree;
 
     double x;
-
+    //finds slope of given line
     double slope = (vertices[index].position.y - vertices[index + 1].position.y)/(vertices[index].position.x - vertices[index + 1].position.x);
 
+    //if slope is negative AKA / shape since y's increase going down
     if(slope < 0){
+        //finds the change in x of the line / side and assigns it to x
         x = vertices[index].position.x - vertices[index+ 1].position.x;
-        
+        //point 1 x value = x value of first point - one third of change in x
         dxOne = std::abs(vertices[index].position.x - (x / 3));
-
+        //point 3 x value = x value of first point - two thirds of change in x
         dxThree = std::abs(vertices[index].position.x - (2 * x / 3));
-        
+        //point 1 y value = y value of second point - four thirds of change in x
         dyOne =std::abs(vertices[index + 1].position.y - (4 * x / 3));
-
+        //point 3 y value = y value of second point - two thirds of change in x
         dyThree = std::abs(vertices[index + 1].position.y - (2 * x / 3));
-
+        //point 2 x value = x value of second point
         dxTwo = vertices[index + 1].position.x;
-        
+        //point 2 y value = point 1 y value
         dyTwo = dyOne;
-
+        //creates vertexes/points to later be put into vector
         tempOne = sf::Vector2f(dxOne, dyOne);
         tempTwo = sf::Vector2f(dxTwo, dyTwo);
         tempThree = sf::Vector2f(dxThree, dyThree);
     }
+    //if slope is positive AKA \ shape since y's increase going down
     else if (slope > 0){
-        
+            
             x = vertices[index].position.x - vertices[index + 1].position.x;
 
             dxOne = std::abs(vertices[index + 1].position.x + (2 * x / 3));
@@ -172,7 +145,7 @@ void KochSnowflake::recurseSnowflake(int counter){
     //Change length of side to be 1/3 the original size
     sideLength = sideLength/3;
 
-    int vectSize = vertices.size();
+    unsigned long int vectSize = vertices.size();
 
     //Loop to find all the points that need to be added
     for(int i = 0; i < vectSize - 1; i++){
@@ -207,8 +180,6 @@ void KochSnowflake::recurseSnowflake(int counter){
 
 void KochSnowflake::firstSnowflake(){
     //Push back the first three points of the original triangle
-    width = 1000;
-    height = 1000;
     vertices.push_back(sf::Vector2f(width/2, height/4));
     vertices.push_back(sf::Vector2f(width/4, 3*height/4));
     vertices.push_back(sf::Vector2f(3*width/4, 3*height/4));
@@ -225,20 +196,43 @@ void KochSnowflake::firstSnowflake(){
 
 
     //Check if degree is greater than one
-    if (degree > 1){
         //Call recursive function
+        if (degree > 1) {
         recurseSnowflake(1);
+        }
+}
+
+void KochSnowflake::addColor(){
+    for(int i = 0;i < finalVector.size();i++){
+        finalVector[i].color = color;
     }
 }
 
-
 void KochSnowflake::drawSnowflake(){
-    window->draw(&finalVector[0], finalVector.size(), sf::LineStrip);
+    if(type % 6 == 0){
+        window->draw(&finalVector[0], finalVector.size(), sf::LineStrip);
+    }
+    if(type % 6 == 1){
+        window->draw(&finalVector[0], finalVector.size(), sf::Lines);
+    }
+    if(type % 6 == 2){
+        window->draw(&finalVector[0], finalVector.size(), sf::Triangles);
+    }
+    if(type % 6 == 3){
+        window->draw(&finalVector[0], finalVector.size(), sf::TrianglesStrip);
+    }
+    if(type % 6 == 4){
+        window->draw(&finalVector[0], finalVector.size(), sf::TrianglesFan);
+    }
+    if(type % 6 == 5){
+        window->draw(&finalVector[0], finalVector.size(), sf::Quads);
+    }
 }
 
 
 void KochSnowflake::createSnowflake(){
     firstSnowflake();
+    addColor();
     drawSnowflake();
 }
 
@@ -248,47 +242,5 @@ void KochSnowflake::createSnowflake(){
 
 
 
-int main()
-{
-    // create the window
-    int height = 1000;
-    int width = 1000;
-    int n = 2;
-    
-    sf::RenderWindow window(sf::VideoMode(width, height), "My window");
 
-    // run the program as long as the window is open
-    while (window.isOpen())
-    {
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-        if(event.type ==sf::Event::KeyPressed){
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-                window.close();
-            }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-                n++;
-                std::cout << n << "\n";
-            }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && n != 0){
-                n--;
-                std::cout << n << "\n";
-            }
-        }
-        // clear the window with black color
-        window.clear();
-        KochSnowflake snowflake = KochSnowflake(n, &window);
-        snowflake.createSnowflake();
-        // end the current frame
-        window.display();
-    }
-
-    return 0;
-}
 

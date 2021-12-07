@@ -1,9 +1,8 @@
 #include "Headers/Menu.hpp"
 #include "Headers/SierpinskiTriangle.hpp"
-//#include "Headers/KochSnowflake.hpp"
+#include "Headers/KochSnowflake.hpp"
 #include "Headers/HilbertCurve.hpp"
-//#include "Headers/DragonCurve.hpp"
-//#include "Header/TreeFractal.hpp"
+#include "Headers/DragonCurve.hpp"
 
 int main() {
     //Width and Height of Window/Image
@@ -36,10 +35,7 @@ int main() {
             }
             //Checks if a key is pressed
             if (event.type == sf::Event::KeyPressed) {
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-                    //If escape key is pressed, close window
-                    window.close();
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
                     // if 0 is pressed, set window to main menu
                     windowSelection = 0;
                     std::cout<<"Main Menu"<<std::endl;
@@ -127,15 +123,16 @@ int main() {
         ST.generateSierpinskiTriangle(width, height, iterations, startColor, window);
     } else if (windowSelection == 2) {
         //set window to koch's snowflake
-        
+        KochSnowflake KS(iterations+1, width, height, type, startColor, &window);
+        KS.createSnowflake();
     } else if (windowSelection == 3) {
         //set window to hilbert's curve
         hilbertCurve HC(iterations, width, height, type, startColor, &window);
         HC.createCurve();
     } else if (windowSelection == 4) {
         //set window to dragon's curve
-        //dragonCurve DC(iterations, width, height, type, startColor, &window);
-        //DC.createCurve();
+        dragonCurve DC(iterations, width, height, type, startColor, &window);
+        DC.createCurve();
     } 
     //Display window
     window.display();
