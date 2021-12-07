@@ -1,3 +1,6 @@
+# Recursive Graphics Generator Makefile V1
+# Written by Mason Jacob
+
 generator.out: main.o Menu.o SierpinskiTriangle.o KochSnowflake.o HilbertCurve.o DragonCurve.o
 	g++ *.o -o generator.out -lsfml-graphics -lsfml-window -lsfml-system
 

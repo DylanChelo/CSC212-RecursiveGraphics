@@ -1,3 +1,6 @@
+//Class Implemetation for the Dragon's Curve Fractal
+//Written by Nick Powers
+
 #include "../Headers/DragonCurve.hpp"
 
 //dragonCurve functions
@@ -68,7 +71,7 @@ void dragonCurve::rotateClockwise(){
 
 //translates all points in the vector over such that the first point = the center of the window
 void dragonCurve::centerDragon(){
-    int offsetX = first[0].position.x - (width/2-width/10);
+    int offsetX = first[0].position.x - (width/2);
     int offsetY = first[0].position.y - (height/2);
     for(int i = 0;i < first.size();i++){
         first[i].position.x += -offsetX;
