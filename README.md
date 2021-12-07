@@ -38,6 +38,7 @@ If you want to go this way, there's a [dedicated tutorial](https://www.sfml-dev.
 
 ## Compile and Run
 1. Clone this repository
+2. cd to the 'Recursive Graphics' directory
 3. Type 'make' in your terminal (without quotes)
 4. Type './generator.out' in your terminal (also without quotes)
 5. Read the Menu screen for instructions on how to use the generator
