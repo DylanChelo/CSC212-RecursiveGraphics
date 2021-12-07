@@ -1,3 +1,6 @@
+//Class Implementation for Koch's Snowflake Fractal
+//Written by Dylan Chelo
+
 #include "../Headers/KochSnowflake.hpp"
 
 //Constructor
