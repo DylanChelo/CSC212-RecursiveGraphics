@@ -1,3 +1,6 @@
+//Header for Sierpinski's Triangle Fractal
+//Written by Mason Jacob
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <sstream>
