@@ -46,7 +46,7 @@ To check that the display has been set, execute the following command:
 which should return the set display, ` :0 `
 
 ### Music Issue
-When the program is run, if the music plays momentarialy and then cuts out, then there is an unknown issue that will cause SFML to break. The only way to fix this is to restart linux and comment out lines 33, 34, 36, 125, 129 and 165 in the main.cpp file (All the lines with the sf::Music class). While this will remove the music, this will allow the program to run correctly. 
+When the program is run, if the music plays momentarialy and then cuts out, then a known but not understood issue is occuring that will cause SFML to break. The only way to fix this is to restart linux and comment out lines 33, 34, 36, 125, 129 and 165 in the main.cpp file (All the lines with the sf::Music class). While this will remove the music, this will allow the program to run correctly. 
 
 # Gallery:
 ## Sierpinski Triangle:
