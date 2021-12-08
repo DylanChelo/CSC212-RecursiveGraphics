@@ -22,7 +22,7 @@ This program is mainly tested on Ubuntu, and currently requires that the SFML li
 
 2.  **Install SFML library**
 
-The SFML Library is currently installed in this repository, however compiling the files using the Makefile is not 100% working. Therefore, it is necessary to install the library through the linus command line using the command below in order to use the current version of the Makefile. 
+The SFML Library is currently installed in this repository, however compiling the files using the Makefile is not 100% working. Therefore, it is necessary to install the library through the linux command line using the command below in order to use the current version of the Makefile. 
 
 ` sudo apt-get install libsfml-dev `
 
